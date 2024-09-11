@@ -1,5 +1,6 @@
 import 'package:causons/auth/connexion.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; 
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -9,6 +10,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  bool voirmdp = false; //la variable pour voir le mot de passe
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,8 @@ class _RegisterState extends State<Register> {
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
                 ),
-                
+
+                // Champ pour le nom d'utilisateur
                 const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -38,6 +41,7 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
 
+             // Champ de l'email
                 const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -49,8 +53,13 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
 
+                // Champ du numéro de phone
                 const SizedBox(height: 20),
                 TextFormField(
+                  keyboardType:TextInputType.phone, // le type de clavier
+                  inputFormatters: <TextInputFormatter>[
+                    FilteringTextInputFormatter.digitsOnly, 
+                  ],
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.phone),
                     labelText: 'Numéro',
@@ -60,19 +69,31 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
 
+                // Champ du mot de passe
                 const SizedBox(height: 20),
                 TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.lock),
+                  obscureText: true, // Utilisation de l'état pour contrôler la visibilité
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock),
                     labelText: 'Mot de passe',
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: const Icon(Icons.visibility,),
+                      onPressed: () {
+                        setState(() {
+                          voirmdp =!voirmdp; //la visibilité du mot de passe
+                        });
+                      },
                     ),
                   ),
                 ),
 
+                // Champ de confirmation du mot de passe
                 const SizedBox(height: 20),
                 TextFormField(
+                  obscureText: true, //  masqué pour la confirmation
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.key),
                     labelText: 'Confirmation du mot de passe',
@@ -82,14 +103,13 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
 
+                // Bouton  d'enregistrement 
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    // Ajouter l'action d'enregistrement ici
                   },
                   child: const Text('S\'enregistrer'),
                 ),
-
                 const SizedBox(height: 20),
                 const Text(
                   'Déjà inscrit? Connectez-vous',
@@ -97,18 +117,19 @@ class _RegisterState extends State<Register> {
                     fontSize: 16,
                   ),
                 ),
+
                 TextButton(
                   onPressed: () {
-                    // Naviguer vers la page de connexion
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => const Connexion()),
+                      MaterialPageRoute(
+                          builder: (context) => const Connexion()),
                     );
                   },
                   child: const Text(
                     'Se connecter',
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Color.fromARGB(255, 221, 187, 33),
                     ),
                   ),
                 ),
