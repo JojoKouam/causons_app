@@ -1,14 +1,14 @@
-import 'package:causons/auth/auth/newpassword.dart';
+import 'package:causons/auth/connexion.dart';
 import 'package:flutter/material.dart';
 
-class Connexion extends StatefulWidget {
-  const Connexion({super.key});
+class Password extends StatefulWidget {
+  const Password({super.key});
 
   @override
-  State<Connexion> createState() => _ConnexionState();
+  State<Password> createState() => _PasswordState();
 }
 
-class _ConnexionState extends State<Connexion> {
+class _PasswordState extends State<Password> {
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +23,11 @@ class _ConnexionState extends State<Connexion> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const Text(
-                  'Veuillez-vous connecter',
+                  'Modifier le mot de passe',
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,  // Centre le texte
                 ),
                 
-                const SizedBox(height: 20),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.account_circle),
-                    labelText: 'Nom',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    ),
-                  ),
-                ),
-
                 const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -55,26 +44,40 @@ class _ConnexionState extends State<Connexion> {
                 TextFormField(
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.lock),
-                    labelText: 'Mot de passe',
+                    labelText: 'Nouveau Mot de passe',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                   ),
                 ),
 
+                 // Champ de confirmation du mot de passe
+                const SizedBox(height: 20),
+                TextFormField(
+                  obscureText: true, //  masqué pour la confirmation
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.key),
+                    labelText: 'Confirmation du mot de passe',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    ),
+                  ),
+                ),
+
+
                 
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
                   },
-                  child: const Text('Se connecter'),
+                  child: const Text('Enregistrer'),
                 ),
 
                 const SizedBox(height: 20),
-                const Text('Mot de passe oublier? Changer de mot de passe'),
+                
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Password()));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
                   },
                   child: const Text('S\'inscrire'),
                 ),
