@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "595087077020",
+    "project_id": "causons-007",
+    "storage_bucket": "causons-007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595087077020:android:7bd537cbba275cbb5c0759",
+        "android_client_info": {
+          "package_name": "ci.causons.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmICybj9UDx_qZ8YWuOyq8D8qy96S5f_8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

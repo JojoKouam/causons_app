@@ -13,8 +13,8 @@ class ProfilPage extends StatelessWidget {
           children: [
             const CircleAvatar(
               radius: 80,
-              backgroundImage: AssetImage("https://placehold.co/600x400"),
-              backgroundColor: Color(0xFFfcab35),
+              backgroundImage: NetworkImage("https://media.licdn.com/dms/image/v2/C4E03AQGiQOIX41Ia9A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1645444749981?e=1731542400&v=beta&t=eMH5bhx_dOuSA_uGX8K0FskOWxhakjBIVA06XC2_AlI"),
+              //backgroundColor: Color(0xFFfcab35),
             ),
             const Text('Nom: John Doe', style: TextStyle(fontSize: 24)),
             const SizedBox(height: 10),
