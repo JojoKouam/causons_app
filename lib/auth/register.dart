@@ -107,7 +107,12 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                   Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
+                    try {
+                      // final credential = await FirebaseAuth.insta
+                    } catch (e) {
+                      print (e);
+                    }
+                   // Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
 
                   },
                   child: const Text('S\'enregistrer'),
