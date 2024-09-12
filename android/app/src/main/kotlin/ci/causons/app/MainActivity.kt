@@ -1,4 +1,4 @@
-package com.example.causons
+package ci.causons.app
 
 import io.flutter.embedding.android.FlutterActivity
 
