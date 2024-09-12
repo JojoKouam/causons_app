@@ -1,4 +1,3 @@
-import 'package:causons/home_page.dart';
 import 'package:flutter/material.dart';
 
 import 'auth/register.dart';
@@ -27,9 +26,6 @@ class MyApp extends StatelessWidget {
    
       debugShowCheckedModeBanner: false,
       home: const Register(),
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: HomePage(),
     );
   }
 }

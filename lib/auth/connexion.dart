@@ -1,4 +1,4 @@
-import 'package:causons/auth/auth/newpassword.dart';
+import 'package:causons/auth/newpassword.dart';
 import 'package:flutter/material.dart';
 
 class Connexion extends StatefulWidget {
