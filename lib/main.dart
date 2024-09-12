@@ -1,12 +1,12 @@
+import 'package:causons/auth/connexion.dart';
 import 'package:flutter/material.dart';
-
-import 'auth/register.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
    
       debugShowCheckedModeBanner: false,
-      home: const Register(),
+      home: const Connexion(),
     );
   }
 }

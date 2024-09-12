@@ -54,6 +54,11 @@ class MessagesPage extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed:() {},
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ),
     );
   }
 

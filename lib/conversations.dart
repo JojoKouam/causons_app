@@ -7,16 +7,33 @@ class ConversationPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Conversation'),
+        title: Row(
+          children: [
+            Expanded(
+              child: TextField(
+                decoration: const InputDecoration(
+                  hintText: 'Rechercher...',
+                  hintStyle: TextStyle(color: Colors.white60),
+                  border: InputBorder.none,
+                ),
+                style: const TextStyle(color: Colors.white),
+              ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.search, color: Colors.white),
+              onPressed: () {
+                // Logic pour effectuer la recherche
+              },
+            ),
+          ],
+        ),
         backgroundColor: Colors.black,
       ),
       body: Column(
         children: <Widget>[
           Expanded(
             child: ListView(
-              // Les nouveaux messages apparaissent en bas
               reverse: true,
-              // Fin utilité de reverse
               padding: const EdgeInsets.all(10.0),
               children: <Widget>[
                 _buildMessage('Salut, comment ça va ?', true),
@@ -40,12 +57,12 @@ class ConversationPage extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 10.0),
         padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
-          color: isMe ? Colors.black38 : Color(0xFFfcab35),
+          color: isMe ? Colors.black38 : const Color(0xFFfcab35),
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
-            bottomLeft: isMe ? Radius.circular(20.0) : Radius.zero,
-            bottomRight: isMe ? Radius.zero : Radius.circular(20.0),
+            topLeft: const Radius.circular(20.0),
+            topRight: const Radius.circular(20.0),
+            bottomLeft: isMe ? const Radius.circular(20.0) : Radius.zero,
+            bottomRight: isMe ? Radius.zero : const Radius.circular(20.0),
           ),
         ),
         child: Text(
@@ -56,7 +73,6 @@ class ConversationPage extends StatelessWidget {
     );
   }
 
-  // Widget ou component de la zone de saisie et d'envoie de massahe
   Widget _buildTextComposer() {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),

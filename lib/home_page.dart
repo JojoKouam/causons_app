@@ -43,11 +43,7 @@ class HomePage extends StatelessWidget {
               Tab(icon: Icon(Icons.person), text: 'Profil'),
             ],
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed:() {},
-            tooltip: 'Increment',
-            child: const Icon(Icons.add),
-          ),
+
         ),
       ),
     );
