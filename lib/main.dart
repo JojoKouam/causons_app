@@ -1,7 +1,5 @@
+import 'package:causons/auth/connexion.dart';
 import 'package:flutter/material.dart';
-
-import 'auth/register.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +16,7 @@ class MyApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
    
       debugShowCheckedModeBanner: false,
-      home: const Register(),
+      home: const Connexion(),
     );
   }
 }

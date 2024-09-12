@@ -27,18 +27,6 @@ class _PasswordState extends State<Password> {
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,  // Centre le texte
                 ),
-                
-                const SizedBox(height: 20),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email),
-                    labelText: 'Email',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    ),
-                    ),
-                  ),
-
                   
                 const SizedBox(height: 20),
                 TextFormField(
@@ -69,18 +57,14 @@ class _PasswordState extends State<Password> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
+                     Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
                   },
                   child: const Text('Enregistrer'),
+
                 ),
 
                 const SizedBox(height: 20),
                 
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
-                  },
-                  child: const Text('S\'inscrire'),
-                ),
               ],
             ),
           ),

@@ -107,31 +107,41 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
+                   Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
+
                   },
                   child: const Text('S\'enregistrer'),
                 ),
+
                 const SizedBox(height: 20),
-                const Text(
-                  'Déjà inscrit? Connectez-vous',
+                Row( 
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                  'Déjà inscrit ? Connectez-vous ',
                   style: TextStyle(
                     fontSize: 16,
                   ),
                 ),
-
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
+                GestureDetector(
+                  onTap: () {
+                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Connexion()),
+                          builder: (context) => const Connexion(),
+                    ),
                     );
                   },
                   child: const Text(
-                    'Se connecter',
+                    'ici',
                     style: TextStyle(
+                      fontSize: 16,
                       color: Color.fromARGB(255, 221, 187, 33),
+                      fontWeight: FontWeight.bold,
+                    ),
                     ),
                   ),
+               ],
                 ),
               ],
             ),
@@ -140,4 +150,4 @@ class _RegisterState extends State<Register> {
       ),
     );
   }
-}
+  }
