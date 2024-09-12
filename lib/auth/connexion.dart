@@ -1,6 +1,5 @@
 import 'package:causons/auth/newpassword.dart';
 import 'package:causons/auth/register.dart';
-import 'package:causons/home_page.dart';
 import 'package:flutter/material.dart';
 
 class Connexion extends StatefulWidget {
@@ -29,18 +28,6 @@ class _ConnexionState extends State<Connexion> {
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,  // Centre le texte
                 ),
-                
-                const SizedBox(height: 20),
-                TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.account_circle),
-                    labelText: 'Nom',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    ),
-                  ),
-                ),
-
                 const SizedBox(height: 20),
                 TextFormField(
                   decoration: const InputDecoration(
@@ -64,23 +51,91 @@ class _ConnexionState extends State<Connexion> {
                   ),
                 ),
 
-                
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
                   },
-                  child: const Text('Se connecter'),
+                    child: const Text('Se connecter'),
                 ),
 
+                
                 const SizedBox(height: 20),
-                const Text('Mot de passe oublier? '),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Password()));
-                  },
-                  child: const Text('S\'inscrire'),
+                Row( 
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                  'S\'enregistrer : ',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
+                GestureDetector(
+                  onTap: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Register(),
+                    ),
+                    );
+                  },
+                  child: const Text(
+                    'ici',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromARGB(255, 221, 187, 33),
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                  ), 
+               ],
+                ),
+
+
+
+                const SizedBox(height: 20),
+                Row( 
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text(
+                  'Changer de mot de passe : ',
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () {
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Password(),
+                    ),
+                    );
+                  },
+                  child: const Text(
+                    'ici',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Color.fromARGB(255, 221, 187, 33),
+                      fontWeight: FontWeight.bold,
+                    ),
+                    ),
+                  ), 
+               ],
+                ),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
               ],
             ),
           ),
@@ -88,4 +143,8 @@ class _ConnexionState extends State<Connexion> {
       ),
     );
   }
-}
+  }
+
+
+
+
