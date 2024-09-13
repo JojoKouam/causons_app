@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: const StartupScreen(), // Widget pour la vérification du stockage
+      home: const StartupScreen(),
     );
   }
 }
@@ -32,6 +32,8 @@ class StartupScreen extends StatefulWidget {
   _StartupScreenState createState() => _StartupScreenState();
 }
 
+
+// Verification du Stockage
 class _StartupScreenState extends State<StartupScreen> {
   @override
   void initState() {
