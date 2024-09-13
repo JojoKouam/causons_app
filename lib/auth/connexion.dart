@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:causons/auth/newpassword.dart';
 import 'package:causons/auth/register.dart';
 import 'package:causons/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:causons/auth/authService.dart';
 
 class Connexion extends StatefulWidget {
   const Connexion({super.key});
@@ -11,6 +14,18 @@ class Connexion extends StatefulWidget {
 }
 
 class _ConnexionState extends State<Connexion> {
+
+  final _auth = AuthService();
+
+  final _email = TextEditingController();
+  final _pwd = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _email.dispose();
+    _pwd.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +46,7 @@ class _ConnexionState extends State<Connexion> {
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _email,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     labelText: 'Email',
@@ -43,6 +59,7 @@ class _ConnexionState extends State<Connexion> {
                   
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _pwd,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.lock),
                     labelText: 'Mot de passe',
@@ -55,8 +72,7 @@ class _ConnexionState extends State<Connexion> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
-
+                    _login();
                   },
                     child: const Text('Se connecter'),
                 ),
@@ -125,26 +141,30 @@ class _ConnexionState extends State<Connexion> {
                   ), 
                ],
                 ),
-
-
-
-
-
-
-
-
-
-
-
-
-
-
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  goToSignup(BuildContext context) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Register()),
+  );
+
+  goToHome(BuildContext context) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const HomePage()),
+  );
+
+  _login() async {
+    final user = await _auth.loginUserWithEmailAndPassword(_email.text, _pwd.text);
+    if (user != null) {
+      log("User connected");
+      goToHome(context);
+    }
   }
   }
 
