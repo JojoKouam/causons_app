@@ -1,4 +1,8 @@
+import 'dart:developer';
+
+import 'package:causons/auth/authService.dart';
 import 'package:causons/auth/connexion.dart';
+import 'package:causons/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; 
 
@@ -10,7 +14,24 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
-  bool voirmdp = false; //la variable pour voir le mot de passe
+  //la variable pour afficher le mot de passe
+  bool voirmdp = false;
+  final _auth = AuthService();
+  final _name = TextEditingController();
+  final _email = TextEditingController();
+  final _numero = TextEditingController();
+  final _pwd = TextEditingController();
+  final _pwdConfirm = TextEditingController();
+
+  @override
+  void dispose() {
+    super.dispose();
+    _name.dispose();
+    _email.dispose();
+    _numero.dispose();
+    _pwd.dispose();
+    _pwdConfirm.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +53,7 @@ class _RegisterState extends State<Register> {
                 // Champ pour le nom d'utilisateur
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _name,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.account_circle),
                     labelText: 'Nom',
@@ -44,6 +66,7 @@ class _RegisterState extends State<Register> {
              // Champ de l'email
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _email,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.email),
                     labelText: 'Email',
@@ -56,6 +79,7 @@ class _RegisterState extends State<Register> {
                 // Champ du numéro de phone
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _numero,
                   keyboardType:TextInputType.phone, // le type de clavier
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly, 
@@ -72,6 +96,7 @@ class _RegisterState extends State<Register> {
                 // Champ du mot de passe
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _pwd,
                   obscureText: true, // Utilisation de l'état pour contrôler la visibilité
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
@@ -93,6 +118,7 @@ class _RegisterState extends State<Register> {
                 // Champ de confirmation du mot de passe
                 const SizedBox(height: 20),
                 TextFormField(
+                  controller: _pwdConfirm,
                   obscureText: true, //  masqué pour la confirmation
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.key),
@@ -107,13 +133,9 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {
-                    try {
-                      // final credential = await FirebaseAuth.insta
-                    } catch (e) {
-                      print (e);
+                    if (_pwd.text == _pwdConfirm.text) {
+                      _signup();
                     }
-                   // Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
-
                   },
                   child: const Text('S\'enregistrer'),
                 ),
@@ -154,5 +176,26 @@ class _RegisterState extends State<Register> {
         ),
       ),
     );
+  }
+
+  // Fonction de redirection vers la page d'accueil
+  goToHome(BuildContext context) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const HomePage()),
+  );
+
+  // Fonction de redirection vers la page de connection
+  goToLogin(BuildContext context) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const Connexion()),
+  );
+
+  // Fonction de connexion
+  _signup() async {
+    final user = await _auth.createUserWithEmailAndPassword(_email.text, _pwd.text);
+    if(user != null) {
+      log("User created");
+      goToHome(context);
+    }
   }
   }
