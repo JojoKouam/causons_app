@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
       title: 'Causons',
       theme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
-   
       debugShowCheckedModeBanner: false,
       home: const Connexion(),
     );

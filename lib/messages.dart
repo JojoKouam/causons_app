@@ -18,13 +18,13 @@ class MessagesPage extends StatelessWidget {
                 color: Colors.grey[800],
                 borderRadius: BorderRadius.circular(25.0),
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: const Icon(Icons.search, color: Colors.white),
+                  prefixIcon: Icon(Icons.search, color: Colors.white),
                   hintText: 'Rechercher des conversations...',
-                  hintStyle: const TextStyle(color: Colors.white70),
-                  contentPadding: const EdgeInsets.all(15.0),
+                  hintStyle: TextStyle(color: Colors.white70),
+                  contentPadding: EdgeInsets.all(15.0),
                 ),
               ),
             ),
@@ -77,7 +77,7 @@ class MessagesPage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ConversationPage(),
+              builder: (context) => const ConversationPage(),
             ),
           );
         },
