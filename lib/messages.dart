@@ -1,9 +1,15 @@
 import 'package:causons/conversations.dart';
+import 'package:causons/messages/contactList.dart';
+import 'package:causons/profil.dart';
+import 'package:causons/services/chatService.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 
 class MessagesPage extends StatelessWidget {
+
   const MessagesPage({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +61,15 @@ class MessagesPage extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed:() {},
+        onPressed:() {
+          Navigator.push(context,
+          MaterialPageRoute(
+              builder: (context) => ContactlistPage()),
+          );
+        },
         tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const Icon(Icons.message, color: Colors.black,),
+        backgroundColor: Color(0xFFfcab35),
       ),
     );
   }
@@ -77,7 +89,7 @@ class MessagesPage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ConversationPage(),
+              builder: (context) => ProfilPage(),
             ),
           );
         },

@@ -31,16 +31,16 @@ class HomePage extends StatelessWidget {
             children: [
               MessagesPage(),
               ArchivedPage(),
-              SettingsPage(),
               ProfilPage(),
+              SettingsPage(),
             ],
           ),
           bottomNavigationBar: const TabBar(
             tabs: [
               Tab(icon: Icon(Icons.chat_outlined), text: 'Conversations'),
               Tab(icon: Icon(Icons.inventory_2_outlined), text: 'Archivées'),
-              Tab(icon: Icon(Icons.settings), text: 'Paramètres'),
               Tab(icon: Icon(Icons.person), text: 'Profil'),
+              Tab(icon: Icon(Icons.settings), text: 'Paramètres'),
             ],
           ),
 

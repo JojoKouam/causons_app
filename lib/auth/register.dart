@@ -1,8 +1,9 @@
 import 'dart:developer';
 
-import 'package:causons/auth/authService.dart';
+import 'package:causons/services/authService.dart';
 import 'package:causons/auth/connexion.dart';
 import 'package:causons/home_page.dart';
+import 'package:causons/services/userService.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'; 
 
@@ -14,6 +15,10 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+
+  // je type la variable userSce en UserService
+  final UserService userSce = UserService();
+
   //la variable pour afficher le mot de passe
   bool voirmdp = false;
   final _auth = AuthService();
@@ -192,7 +197,7 @@ class _RegisterState extends State<Register> {
 
   // Fonction de connexion
   _signup() async {
-    final user = await _auth.createUserWithEmailAndPassword(_email.text, _pwd.text);
+    final user = await _auth.createUserWithEmailAndPassword(_email.text, _pwd.text, _name.text, _numero.text);
     if(user != null) {
       log("User created");
       goToHome(context);

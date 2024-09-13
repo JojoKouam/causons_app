@@ -4,7 +4,7 @@ import 'package:causons/auth/newpassword.dart';
 import 'package:causons/auth/register.dart';
 import 'package:causons/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:causons/auth/authService.dart';
+import 'package:causons/services/authService.dart';
 
 class Connexion extends StatefulWidget {
   const Connexion({super.key});

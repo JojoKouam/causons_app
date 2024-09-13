@@ -1,36 +1,58 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:causons/services/userService.dart';
 
 class ProfilPage extends StatelessWidget {
   const ProfilPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        // padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const CircleAvatar(
-              radius: 80,
-              backgroundImage: NetworkImage("https://media.licdn.com/dms/image/v2/C4E03AQGiQOIX41Ia9A/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1645444749981?e=1731542400&v=beta&t=eMH5bhx_dOuSA_uGX8K0FskOWxhakjBIVA06XC2_AlI"),
-              //backgroundColor: Color(0xFFfcab35),
+    final userService = UserService();
+    return FutureBuilder<Map<String, dynamic>?>(
+      future: userService.getConnectedUserData(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Scaffold(
+            body: Center(child: CircularProgressIndicator()), // Affiche un indicateur de chargement
+          );
+        } else if (snapshot.hasError) {
+          return Scaffold(
+            body: Center(child: Text('Error: ${snapshot.error}')), // Affiche une erreur si la récupération échoue
+          );
+        } else if (snapshot.hasData) {
+          final userData = snapshot.data!;
+          return Scaffold(
+            body: Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 80,
+                    backgroundImage: NetworkImage(userData['profilePictureUrl'] ?? 'https://placehold.co/400x600'),
+                  ),
+                  Text('Nom: ${userData['name'] ?? 'N/A'}', style: TextStyle(fontSize: 24)),
+                  SizedBox(height: 10),
+                  Text('Email: ${userData['email'] ?? 'N/A'}', style: TextStyle(fontSize: 18)),
+                  SizedBox(height: 10),
+                  Text('Téléphone: ${userData['contacts'] ?? 'N/A'}', style: TextStyle(fontSize: 18)),
+                  SizedBox(height: 10),
+                  ElevatedButton(
+                    onPressed: () {
+                      log("message");
+                    },
+                    child: Text('Modifier Profil'),
+                  ),
+                ],
+              ),
             ),
-            const Text('Nom: John Doe', style: TextStyle(fontSize: 24)),
-            const SizedBox(height: 10),
-            const Text('Email: johndoe@example.com', style: TextStyle(fontSize: 18)),
-            const SizedBox(height: 10),
-            const Text('Télephone: +225 07 07 07 00 00', style: TextStyle(fontSize: 18)),
-            const SizedBox(height: 10),
-            ElevatedButton(
-              onPressed: () {
-                // Action à effectuer
-              },
-              child: const Text('Modifier Profil'),
-            ),
-          ],
-        ),
-      ),
+          );
+        } else {
+          return Scaffold(
+            body: Center(child: Text('No user data found')), // Affiche un message si aucune donnée utilisateur n'est trouvée
+          );
+        }
+      },
     );
   }
 }
