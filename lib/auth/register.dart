@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:causons/auth/authService.dart';
@@ -137,8 +139,14 @@ class _RegisterState extends State<Register> {
                       _signup();
                     }
                   },
-                  child: const Text('S\'enregistrer'),
-                ),
+                   style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 252, 171, 53),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                   ),
+                  child: const Text('S\'enregistrer'),),
 
                 const SizedBox(height: 20),
                 Row( 

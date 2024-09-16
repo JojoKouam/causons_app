@@ -74,7 +74,18 @@ class _ConnexionState extends State<Connexion> {
                   onPressed: () {
                     _login();
                   },
-                    child: const Text('Se connecter'),
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 252, 171, 53),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        
+                      ),
+              
+                ),
+                  child: const Text('Se connecter'),
+                  
+
                 ),
 
                 
@@ -134,7 +145,7 @@ class _ConnexionState extends State<Connexion> {
                     'ici',
                     style: TextStyle(
                       fontSize: 16,
-                      color: Color.fromARGB(255, 221, 187, 33),
+                      color: Color.fromARGB(255, 252, 171, 53),
                       fontWeight: FontWeight.bold,
                     ),
                     ),
@@ -163,6 +174,7 @@ class _ConnexionState extends State<Connexion> {
     final user = await _auth.loginUserWithEmailAndPassword(_email.text, _pwd.text);
     if (user != null) {
       log("User connected");
+      // ignore: use_build_context_synchronously
       goToHome(context);
     }
   }

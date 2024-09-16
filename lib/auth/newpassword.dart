@@ -28,38 +28,34 @@ class _PasswordState extends State<Password> {
                   textAlign: TextAlign.center,  // Centre le texte
                 ),
                   
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 TextFormField(
                   decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.lock),
-                    labelText: 'Nouveau Mot de passe',
+                    prefixIcon: Icon(Icons.email),
+                    labelText: 'Email',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                   ),
                 ),
-
-                 // Champ de confirmation du mot de passe
-                const SizedBox(height: 20),
-                TextFormField(
-                  obscureText: true, //  masqué pour la confirmation
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.key),
-                    labelText: 'Confirmation du mot de passe',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(8.0)),
-                    ),
-                  ),
-                ),
-
 
                 
-                const SizedBox(height: 20),
+                
+                const SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
                      Navigator.push(context, MaterialPageRoute(builder: (context) => const Connexion()));
                   },
-                  child: const Text('Enregistrer'),
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 252, 171, 53),
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+              
+                ),
+                  child: const Text('Envoyer'),
+                  
 
                 ),
 

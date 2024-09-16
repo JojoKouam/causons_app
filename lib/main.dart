@@ -1,4 +1,5 @@
-import 'package:causons/auth/connexion.dart';
+// import 'package:causons/auth/connexion.dart';
+import 'package:causons/welcome.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(),
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      home: const Connexion(),
+      home: const Welcome(),
     );
   }
 }

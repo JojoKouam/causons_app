@@ -1,3 +1,7 @@
+// ignore: file_names
+// ignore: file_names
+// ignore_for_file: file_names, duplicate_ignore
+
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -36,4 +40,6 @@ class AuthService {
       log("Something went wrong");
     }
   }
+
+  signIn(email, password) {}
 }
