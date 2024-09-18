@@ -1,5 +1,3 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'dart:developer';
 
 import 'package:causons/auth/authService.dart';
@@ -38,6 +36,16 @@ class _RegisterState extends State<Register> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 252, 171, 53), // AppBar transparent
+        elevation: 0, 
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () {
+            Navigator.pop(context); 
+          },
+        ),
+      ),
       body: Center(
         child: Container(
           margin: const EdgeInsets.all(20),
@@ -65,7 +73,7 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
 
-             // Champ de l'email
+                // Champ de l'email
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: _email,
@@ -78,11 +86,11 @@ class _RegisterState extends State<Register> {
                   ),
                 ),
 
-                // Champ du numéro de phone
+                // Champ du numéro de téléphone
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: _numero,
-                  keyboardType:TextInputType.phone, // le type de clavier
+                  keyboardType: TextInputType.phone, // le type de clavier
                   inputFormatters: <TextInputFormatter>[
                     FilteringTextInputFormatter.digitsOnly, 
                   ],
@@ -99,7 +107,7 @@ class _RegisterState extends State<Register> {
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: _pwd,
-                  obscureText: true, // Utilisation de l'état pour contrôler la visibilité
+                  obscureText: !voirmdp, // Utilisation de l'état pour contrôler la visibilité
                   decoration: InputDecoration(
                     prefixIcon: const Icon(Icons.lock),
                     labelText: 'Mot de passe',
@@ -107,10 +115,12 @@ class _RegisterState extends State<Register> {
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
                     ),
                     suffixIcon: IconButton(
-                      icon: const Icon(Icons.visibility,),
+                      icon: Icon(
+                        voirmdp ? Icons.visibility : Icons.visibility_off,
+                      ),
                       onPressed: () {
                         setState(() {
-                          voirmdp =!voirmdp; //la visibilité du mot de passe
+                          voirmdp = !voirmdp; // Change la visibilité du mot de passe
                         });
                       },
                     ),
@@ -139,44 +149,42 @@ class _RegisterState extends State<Register> {
                       _signup();
                     }
                   },
-                   style: ElevatedButton.styleFrom(
-                      foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 252, 171, 53),
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8.0),
-                      ),
-                   ),
-                  child: const Text('S\'enregistrer'),),
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.black, 
+                    backgroundColor: const Color.fromARGB(255, 252, 171, 53),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                  ),
+                  child: const Text('S\'enregistrer'),
+                ),
 
                 const SizedBox(height: 20),
-                Row( 
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                  'Déjà inscrit ? Connectez-vous ',
-                  style: TextStyle(
-                    fontSize: 16,
-                  ),
-                ),
-                GestureDetector(
-                  onTap: () {
-                     Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Connexion(),
+                      'Déjà inscrit ? Connectez-vous ',
+                      style: TextStyle(fontSize: 16),
                     ),
-                    );
-                  },
-                  child: const Text(
-                    'ici',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color.fromARGB(255, 221, 187, 33),
-                      fontWeight: FontWeight.bold,
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Connexion()),
+                        );
+                      },
+                      child: const Text(
+                        'ici',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color.fromARGB(255, 221, 187, 33),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
-                    ),
-                  ),
-               ],
+                  ],
                 ),
               ],
             ),
@@ -186,24 +194,13 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  // Fonction de redirection vers la page d'accueil
-  goToHome(BuildContext context) => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const HomePage()),
-  );
-
-  // Fonction de redirection vers la page de connection
-  goToLogin(BuildContext context) => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const Connexion()),
-  );
-
   // Fonction de connexion
   _signup() async {
     final user = await _auth.createUserWithEmailAndPassword(_email.text, _pwd.text);
-    if(user != null) {
+    if (user != null) {
       log("User created");
-      goToHome(context);
+      // ignore: use_build_context_synchronously
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage()));
     }
   }
-  }
+}
