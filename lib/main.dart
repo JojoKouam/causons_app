@@ -33,7 +33,7 @@ class StartupScreen extends StatefulWidget {
 }
 
 
-// Verification du Stockage
+// Verification du Stockage histoire de voir si un utilisateur est connecté
 class _StartupScreenState extends State<StartupScreen> {
   @override
   void initState() {
