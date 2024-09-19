@@ -11,14 +11,14 @@ class ConversationPage extends StatelessWidget {
       appBar: AppBar(
         title: Row(
           children: [
-            Expanded(
+            const Expanded(
               child: TextField(
-                decoration: const InputDecoration(
+                decoration: InputDecoration(
                   hintText: 'Rechercher...',
                   hintStyle: TextStyle(color: Colors.white60),
                   border: InputBorder.none,
                 ),
-                style: const TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.white),
               ),
             ),
             IconButton(
@@ -80,9 +80,9 @@ class ConversationPage extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: <Widget>[
-          Expanded(
+          const Expanded(
             child: TextField(
-              decoration: const InputDecoration.collapsed(
+              decoration: InputDecoration.collapsed(
                 hintText: "Écrire un message...",
               ),
             ),
