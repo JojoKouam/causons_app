@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, use_build_context_synchronously, prefer_interpolation_to_compose_strings
+
 import 'dart:developer';
 
 import 'package:causons/conversations.dart';
@@ -11,6 +13,7 @@ class ContactlistPage extends StatelessWidget {
   ContactlistPage({super.key});
 
   final _auth = FirebaseAuth.instance;
+  // ignore: unused_field
   final AuthService _authSce = AuthService();
   final ChatService _chatSce = ChatService();
 

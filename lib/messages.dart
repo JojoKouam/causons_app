@@ -1,6 +1,8 @@
+// ignore: unused_import
 import 'package:causons/conversations.dart';
 import 'package:causons/messages/contactList.dart';
 import 'package:causons/profil.dart';
+// ignore: unused_import
 import 'package:causons/services/chatService.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +26,13 @@ class MessagesPage extends StatelessWidget {
                 color: Colors.grey[800],
                 borderRadius: BorderRadius.circular(25.0),
               ),
-              child: TextField(
+              child: const TextField(
                 decoration: InputDecoration(
                   border: InputBorder.none,
-                  prefixIcon: const Icon(Icons.search, color: Colors.white),
+                  prefixIcon: Icon(Icons.search, color: Colors.white),
                   hintText: 'Rechercher des conversations...',
-                  hintStyle: const TextStyle(color: Colors.white70),
-                  contentPadding: const EdgeInsets.all(15.0),
+                  hintStyle: TextStyle(color: Colors.white70),
+                  contentPadding: EdgeInsets.all(15.0),
                 ),
               ),
             ),
@@ -68,8 +70,8 @@ class MessagesPage extends StatelessWidget {
           );
         },
         tooltip: 'Increment',
+        backgroundColor: const Color(0xFFfcab35),
         child: const Icon(Icons.message, color: Colors.black,),
-        backgroundColor: Color(0xFFfcab35),
       ),
     );
   }
@@ -89,7 +91,7 @@ class MessagesPage extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => ProfilPage(),
+              builder: (context) => const ProfilPage(),
             ),
           );
         },

@@ -13,7 +13,7 @@ class ProfilPage extends StatelessWidget {
       future: userService.getConnectedUserData(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
+          return const Scaffold(
             body: Center(child: CircularProgressIndicator()), // Affiche un indicateur de chargement
           );
         } else if (snapshot.hasError) {
@@ -31,24 +31,24 @@ class ProfilPage extends StatelessWidget {
                     radius: 80,
                     backgroundImage: NetworkImage(userData['profilePictureUrl'] ?? 'https://placehold.co/400x600'),
                   ),
-                  Text('Nom: ${userData['name'] ?? 'N/A'}', style: TextStyle(fontSize: 24)),
-                  SizedBox(height: 10),
-                  Text('Email: ${userData['email'] ?? 'N/A'}', style: TextStyle(fontSize: 18)),
-                  SizedBox(height: 10),
-                  Text('Téléphone: ${userData['contacts'] ?? 'N/A'}', style: TextStyle(fontSize: 18)),
-                  SizedBox(height: 10),
+                  Text('Nom: ${userData['name'] ?? 'N/A'}', style: const TextStyle(fontSize: 24)),
+                  const SizedBox(height: 10),
+                  Text('Email: ${userData['email'] ?? 'N/A'}', style: const TextStyle(fontSize: 18)),
+                  const SizedBox(height: 10),
+                  Text('Téléphone: ${userData['contacts'] ?? 'N/A'}', style: const TextStyle(fontSize: 18)),
+                  const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {
                       log("message");
                     },
-                    child: Text('Modifier Profil'),
+                    child: const Text('Modifier Profil'),
                   ),
                 ],
               ),
             ),
           );
         } else {
-          return Scaffold(
+          return const Scaffold(
             body: Center(child: Text('No user data found')), // Affiche un message si aucune donnée utilisateur n'est trouvée
           );
         }

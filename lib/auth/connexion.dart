@@ -14,6 +14,9 @@ class Connexion extends StatefulWidget {
 }
 
 class _ConnexionState extends State<Connexion> {
+  
+  //la variable pour afficher le mot de passe
+  bool voirmdp = false;
 
   final _auth = AuthService();
 
@@ -44,6 +47,7 @@ class _ConnexionState extends State<Connexion> {
                   style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,  // Centre le texte
                 ),
+                // Champ pour l'email
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: _email,
@@ -56,19 +60,29 @@ class _ConnexionState extends State<Connexion> {
                     ),
                   ),
 
-                  
+                  // Champ du mot de passe
                 const SizedBox(height: 20),
                 TextFormField(
                   controller: _pwd,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.lock),
+                  obscureText: !voirmdp, // Utilisation de l'état pour contrôler la visibilité
+                  decoration: InputDecoration(
+                    prefixIcon: const Icon(Icons.lock),
                     labelText: 'Mot de passe',
-                    border: OutlineInputBorder(
+                    border: const OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                    ),
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        voirmdp ? Icons.visibility : Icons.visibility_off,
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          voirmdp = !voirmdp; // Change la visibilité du mot de passe
+                        });
+                      },
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: () {

@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:developer';
 
 import 'package:causons/services/authService.dart';
@@ -186,13 +188,13 @@ class _RegisterState extends State<Register> {
   // Fonction de redirection vers la page d'accueil
   goToHome(BuildContext context) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const HomePage()),
+    MaterialPageRoute(builder: (context) => const Connexion()),
   );
 
   // Fonction de redirection vers la page de connection
   goToLogin(BuildContext context) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => const Connexion()),
+    MaterialPageRoute(builder: (context) => const HomePage()),
   );
 
   // Fonction de connexion
